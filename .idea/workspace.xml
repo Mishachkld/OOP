@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c283e29-488e-4b0e-b39c-37c38d3ee83b" name="Changes" comment="" />
+    <list default="true" id="4c283e29-488e-4b0e-b39c-37c38d3ee83b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Lab1/DifferentialCalculating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab1/DifferentialCalculating.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +19,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -24,6 +29,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2VTKzXVVEhQDAH01RfpwB3lh1Ia" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,22 +78,11 @@
       <workItem from="1694854893751" duration="6305000" />
       <workItem from="1695142725053" duration="3334000" />
       <workItem from="1695317673837" duration="1960000" />
-      <workItem from="1695331026036" duration="3055000" />
+      <workItem from="1695331026036" duration="3370000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Lab1/DifferentialCalculating.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

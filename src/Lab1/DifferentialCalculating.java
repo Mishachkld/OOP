@@ -63,7 +63,8 @@ class LowDifferentialCalculating extends DifferentialCalculating { /// насл�
 
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
-        return (function.apply(xDote + getDelta()) - function.apply(xDote)) / getDelta();
+
+        return (function.apply(xDote + getDelta()) - function.apply(xDote - getDelta())) / 2* getDelta();
     }
 
     @Override
@@ -84,7 +85,8 @@ class HighDifferentialCalculating extends DifferentialCalculating {         /// 
 
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
-        return (function.apply(xDote + getDelta()) - function.apply(xDote - getDelta())) / 2* getDelta();
+        return (function.apply(xDote + getDelta()) - function.apply(xDote)) / getDelta();
+
     }
 
     @Override
@@ -96,7 +98,7 @@ class HighDifferentialCalculating extends DifferentialCalculating {         /// 
 
 class Controller {
     public static void main(String[] args) {
-        double delta = 0.1;
+        double delta = 0.000000000000001;
         List<DifferentialCalculating> calculatings = new ArrayList<>();
         calculatings.add(new LowDifferentialCalculating(delta));         // полиморфизм
         calculatings.add(new MidDifferentialCalculation(delta));         // полиморфизм
