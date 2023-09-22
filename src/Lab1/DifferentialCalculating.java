@@ -4,20 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.UnaryOperator;
 
-public abstract class DifferentialCalculating {
+public abstract class DifferentialCalculating { // класс - родитель
 
     private double delta;
 
     public DifferentialCalculating(double delta) {        /// throw Exception
-        if (delta >= 0)
-            this.delta = delta;
+        if (delta >= 0) this.delta = delta;
         else {                                            /// стоит ли в конструкторе выбрасывать ошибку?
             System.out.println("Неверно введенна дельта");
             this.delta = 0;                               // throw new Exception("Неверно введенна дельта");
         }
     }
 
-    public abstract double calcDifferential(UnaryOperator<Double> function, double xDote);
+    public abstract double calcDifferential(UnaryOperator<Double> function, double xDote);  //
 
 
     public double getDelta() {                              /// инкапсуляция
@@ -25,8 +24,7 @@ public abstract class DifferentialCalculating {
     }
 
     public void setDelta(double delta) {                    /// инкапсуляция
-        if (delta >= 0)
-            this.delta = delta;
+        if (delta >= 0) this.delta = delta;
         else {
             System.out.println("Неверно введенна дельта");
             this.delta = 0;
@@ -42,7 +40,7 @@ class MidDifferentialCalculation extends DifferentialCalculating {  /// насл
 
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
-        return (function.apply(xDote) - function.apply(xDote - getDelta())) / getDelta();
+        return (function.apply(xDote + getDelta()) - function.apply(xDote - getDelta())) / (2 * getDelta());
     }
 
     @Override
@@ -64,7 +62,7 @@ class LowDifferentialCalculating extends DifferentialCalculating { /// насл�
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
 
-        return (function.apply(xDote + getDelta()) - function.apply(xDote - getDelta())) / 2* getDelta();
+        return (function.apply(xDote) - function.apply(xDote - getDelta())) / getDelta();
     }
 
     @Override
@@ -86,7 +84,6 @@ class HighDifferentialCalculating extends DifferentialCalculating {         /// 
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
         return (function.apply(xDote + getDelta()) - function.apply(xDote)) / getDelta();
-
     }
 
     @Override
@@ -98,19 +95,19 @@ class HighDifferentialCalculating extends DifferentialCalculating {         /// 
 
 class Controller {
     public static void main(String[] args) {
-        double delta = 0.000000000000001;
+        double delta = 0.01;
         List<DifferentialCalculating> calculatings = new ArrayList<>();
         calculatings.add(new LowDifferentialCalculating(delta));         // полиморфизм
         calculatings.add(new MidDifferentialCalculation(delta));         // полиморфизм
         calculatings.add(new HighDifferentialCalculating(delta));        // полиморфизм
         for (DifferentialCalculating calc : calculatings) {
+            System.out.println((calc.calcDifferential(Controller::function, 5)) + " " + calc);
             /*double result = 0;
             for (int i = 0; i < 10; i++) {
                 result += calc.calcDifferential(Controller::function, i); // полиморфизм
             }
 
             System.out.println(result + " " + calc);*/
-            System.out.println((calc.calcDifferential(Controller::function, 5)) + " " + calc);
         }
     }
 
