@@ -39,6 +39,11 @@ class MidDifferentialCalculation extends DifferentialCalculating {  /// насл
     }
 
     @Override
+    public double getDelta() {
+        return super.getDelta() * super.getDelta();
+    }
+
+    @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
         return (function.apply(xDote + getDelta()) - function.apply(xDote - getDelta())) / (2 * getDelta());
     }
@@ -53,11 +58,9 @@ class MidDifferentialCalculation extends DifferentialCalculating {  /// насл
 
 class LowDifferentialCalculating extends DifferentialCalculating { /// наследование
 
-
     public LowDifferentialCalculating(double delta) {
         super(delta);
     }
-
 
     @Override
     public double calcDifferential(UnaryOperator<Double> function, double xDote) {
@@ -101,13 +104,7 @@ class Controller {
         calculatings.add(new MidDifferentialCalculation(delta));         // полиморфизм
         calculatings.add(new HighDifferentialCalculating(delta));        // полиморфизм
         for (DifferentialCalculating calc : calculatings) {
-            System.out.println((calc.calcDifferential(Controller::function, 5)) + " " + calc);
-            /*double result = 0;
-            for (int i = 0; i < 10; i++) {
-                result += calc.calcDifferential(Controller::function, i); // полиморфизм
-            }
-
-            System.out.println(result + " " + calc);*/
+            System.out.println((calc.calcDifferential(Controller::function, 5)) + " " + calc + ", Погрешность: " + calc.getDelta());
         }
     }
 
