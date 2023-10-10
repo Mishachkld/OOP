@@ -16,10 +16,10 @@ public class Array3D<T> {
         array.setItem00(0, 1212);
         System.out.println(array);
         System.out.println(array.getItemAtPosition(1, 0, 0));
-        System.out.println("array.get1D: " + array.getValue2(1));
-        System.out.println("array.getItemAtPosition: "+ array.getItemAtPosition(1, 0, 0));
-        System.out.println("array.getItem01: " + array.getItem01(0) );
-        System.out.println("array.get2D: " + array.getValue1(1, 0));
+        System.out.println("array.get1D 1: " + array.getValue2D(1));
+        System.out.println("array.getItemAtPosition 1 0 0: "+ array.getItemAtPosition(1, 0, 0));
+        System.out.println("array.getValues1 0 1: " + array.getValues1(0, 1) );
+        System.out.println("array.getValue1D 1 0: " + array.getValue1D(1, 0));
     }
 
     private static final int START_POSITION = 0;
@@ -92,16 +92,16 @@ public class Array3D<T> {
         return size > 0;
     }
 
-    public T getItem01(int k) {
-        return getItemAtPosition(START_POSITION, 1, k);
+    public List<T> getValues1(int j, int k) {
+        return getValue1D(j, k);
     }
 
-    public T getItem02(int k) {
-        return getItemAtPosition(START_POSITION, 2, k);
+    public List<T> getItem02(int i, int k) {
+        return getValue1D(i, k);
     }
 
-    public T getItem12(int k) {
-        return getItemAtPosition(1, 2, k);
+    public List<T> getItem12(int j , int k) {
+        return getValue1D(j, k);
     }
 
 
@@ -112,19 +112,19 @@ public class Array3D<T> {
         else throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
     }
 
-    public List<T> getValue1(int i, int j) {
+    public List<T> getValue1D(int i, int j) {
         if (checkerOfIndex(i, j, START_POSITION))
             return megaArray3D.get(i).get(j);
         else throw new IndexOutOfBoundsException("Выход за пределы массива");
     }
 
-    public List<List<T>> getValue2(int i) {
+    public List<List<T>> getValue2D(int i) {
         if (checkerOfIndex(i, START_POSITION, START_POSITION))
             return megaArray3D.get(i);
         else throw new IndexOutOfBoundsException("Выход за пределы массива");
     }
 
-    public List<List<List<T>>> getValue3() {
+    public List<List<List<T>>> getAllValues() {
         return megaArray3D;
     }
 
