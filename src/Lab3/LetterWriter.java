@@ -2,6 +2,7 @@ package Lab3;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LetterWriter {
@@ -21,15 +22,17 @@ public class LetterWriter {
     }
 
     private boolean isBigFont;
-    private final List<List<String>> letters = new ArrayList<>();
-
-    private int[] tecCoordinates = {0, 0};
+    private List<Letter> alphabet;
 
     public static void main(String[] args) {
         LetterWriter writer = new LetterWriter();
     }
 
+
+    private int[] tecCoordinates = {0, 0};
+
     public LetterWriter() {
+        alphabet = new ArrayList<>();
         try {
             getLetters();
         } catch (IOException e) {
@@ -38,13 +41,74 @@ public class LetterWriter {
 
     }
 
-    private void getLetters() throws IOException {
-        File file = new File("Lab3/5.txt");
+    private static List<List<String>> readFile() throws IOException {
+        List<List<String>> letters = new ArrayList<>();
+        File file = new File("D:\\Development\\JavaProject\\Desktop\\OOP labs\\src\\Lab3\\5 (2).txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
-        letters.get(0).add(reader.readLine());
-
+        String line;
+        while ((line = reader.readLine()) != null) {
+            letters.add(new ArrayList<>(List.of(line.split(""))));
+        }
+        return letters;
     }
 
+    private void getLetters() throws IOException {
+        List<List<String>> array = readFile();
+        int startIndex = 0;
+        char idLetter = 65;
+        List<String> arrayStart = array.get(0);
+        for (int index = 0; index < arrayStart.size(); index++) {
+            if (arrayStart.get(index).equals(" ")) {
+                boolean flag = true;
+                for (int i = 0; i < array.size(); i++) {
+                    if (!arrayStart.get(index).equals(" ")) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    StringBuilder strBuilder = new StringBuilder();
+                    for (int i = 0; i < array.size(); i++) {
+                        for (int j = startIndex; j < index; j++) {
+                            strBuilder.append(array.get(i).get(j));
+                        }
+                        strBuilder.append("\n");
+                    }
+                    alphabet.add(new Letter(String.valueOf(idLetter++), strBuilder.toString()));
+                    startIndex = index + 1;
+
+                }
+
+            }
+        }
+        for (Letter letter:alphabet){
+            System.out.println(letter);
+        }
+    }
+
+
+    /*
+            for (int i = l; i < size - 8; i++) {
+                for (List<String> letter : letters) {
+                    strBuilder.append(letter.get(i));
+                }
+                strBuilder.append("\n");
+            }
+            arrayLetter.add(new Letter(String.valueOf(idLetter++), strBuilder.toString()));
+            strBuilder = new StringBuilder();
+
+    for (int j = 0; j < letters.get(i).size(); j++) {
+                String item = letters.get(i).get(j);
+                if (item.equals(" ")) {
+                    if (!isAllSpace(i, j)){
+
+                    }
+                    else {
+                        strBuilder = new StringBuilder();
+                    }
+                } else
+                    strBuilder.append(item).append("\n");
+            }*/
 
     public void writeText(ConsoleColor consoleColor, String text, int x, int y) {
         StringBuilder strBuilder = new StringBuilder();
