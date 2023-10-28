@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4c283e29-488e-4b0e-b39c-37c38d3ee83b" name="Changes" comment="some changes">
-      <change afterPath="$PROJECT_DIR$/src/Lab2/Array3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab2/List3D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab1/DifferentialCalculating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab1/DifferentialCalculating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab2/Array3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/Array3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/5 (2).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/Letter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/Letter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/LetterWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/LetterWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +29,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/azul-13.0.14/lib/src.zip!/java.desktop/java/awt/Color.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,24 +57,19 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Array3D">
-    <configuration name="Array3D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Lab2.Array3D" />
-      <module name="OOP labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Lab2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\JavaProject\Desktop\OOP labs\src\Lab3" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.LetterWriter">
     <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Lab1.Controller" />
       <module name="OOP labs" />
@@ -79,9 +83,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LetterWriter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab3.LetterWriter" />
+      <module name="OOP labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="List3D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Lab2.List3D" />
+      <module name="OOP labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Lab2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="OOP labs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Array3D" />
+        <item itemvalue="Application.LetterWriter" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.List3D" />
         <item itemvalue="Application.Controller" />
       </list>
     </recent_temporary>
@@ -113,7 +152,17 @@
       <workItem from="1695737792435" duration="1792000" />
       <workItem from="1695760437050" duration="174000" />
       <workItem from="1696800972706" duration="2099000" />
-      <workItem from="1696803221574" duration="430000" />
+      <workItem from="1696803221574" duration="501000" />
+      <workItem from="1696859310056" duration="3647000" />
+      <workItem from="1696888951331" duration="468000" />
+      <workItem from="1696931251515" duration="5943000" />
+      <workItem from="1696938155262" duration="1975000" />
+      <workItem from="1697210036890" duration="603000" />
+      <workItem from="1697227032957" duration="8649000" />
+      <workItem from="1697236361518" duration="32000" />
+      <workItem from="1698156437906" duration="4718000" />
+      <workItem from="1698328016300" duration="612000" />
+      <workItem from="1698412478003" duration="502000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <option name="closed" value="true" />
@@ -139,14 +188,94 @@
       <option name="project" value="LOCAL" />
       <updated>1695483230781</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1696803690043</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696803690043</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Lab 2">
+      <option name="closed" value="true" />
+      <created>1696938927859</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696938927859</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Lab 2">
+      <option name="closed" value="true" />
+      <created>1696939284685</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696939284685</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Lab 2">
+      <option name="closed" value="true" />
+      <created>1697232211241</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697232211241</updated>
+    </task>
+    <task id="LOCAL-00008" summary="some changes">
+      <created>1697238785847</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697238785847</updated>
+    </task>
+    <task id="LOCAL-00009" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1697885778509</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1697885778509</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Lab 2" />
     <MESSAGE value="some changes" />
     <option name="LAST_COMMIT_MESSAGE" value="some changes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab3/LetterWriter.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Lab3/LetterWriter.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="line" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

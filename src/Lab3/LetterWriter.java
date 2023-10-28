@@ -2,10 +2,10 @@ package Lab3;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class LetterWriter {
+
     public enum ConsoleColor {
         YELLOW("\033[0m"), BLUE("\033[0;34m"), PURPLE("\033[0;35m");
 
@@ -21,17 +21,20 @@ public class LetterWriter {
 
     }
 
+    private static final LetterWriter letterWriter = new LetterWriter();
     private boolean isBigFont;
     private List<Letter> alphabet;
 
     public static void main(String[] args) {
-        LetterWriter writer = new LetterWriter();
+        LetterWriter writer = LetterWriter.getLetterWriter();
+        writer.writeTextToArray(ConsoleColor.YELLOW, "HELLO AMIGO");
+//        HashMap<String, List<String>> hashMap = new HashMap<>();
     }
 
 
     private int[] tecCoordinates = {0, 0};
 
-    public LetterWriter() {
+    private LetterWriter() {
         alphabet = new ArrayList<>();
         try {
             getLetters();
@@ -41,9 +44,13 @@ public class LetterWriter {
 
     }
 
-    private static List<List<String>> readFile() throws IOException {
+    private List<List<String>> readFile() throws IOException {
+        String path = "D:\\Development\\JavaProject\\Desktop\\OOP labs\\src\\Lab3\\5.txt";
+        if (!isBigFont) {
+            path = "D:\\Development\\JavaProject\\Desktop\\OOP labs\\src\\Lab3\\7.txt";
+        }
         List<List<String>> letters = new ArrayList<>();
-        File file = new File("D:\\Development\\JavaProject\\Desktop\\OOP labs\\src\\Lab3\\5 (2).txt");
+        File file = new File(path);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         while ((line = reader.readLine()) != null) {
@@ -60,77 +67,72 @@ public class LetterWriter {
         for (int index = 0; index < arrayStart.size(); index++) {
             if (arrayStart.get(index).equals(" ")) {
                 boolean flag = true;
-                for (int i = 0; i < array.size(); i++) {
-                    if (!arrayStart.get(index).equals(" ")) {
+                for (List<String> strings : array) {
+                    if (!strings.get(index).equals(" ")) {
                         flag = false;
                         break;
                     }
                 }
                 if (flag) {
-                    StringBuilder strBuilder = new StringBuilder();
-                    for (int i = 0; i < array.size(); i++) {
+                    List<String> strArray = new ArrayList<>();
+                    for (List<String> strings : array) {
+                        StringBuilder stringBuilder = new StringBuilder();
                         for (int j = startIndex; j < index; j++) {
-                            strBuilder.append(array.get(i).get(j));
+                            stringBuilder.append(strings.get(j));
                         }
-                        strBuilder.append("\n");
+                        strArray.add(stringBuilder.toString());
                     }
-                    alphabet.add(new Letter(String.valueOf(idLetter++), strBuilder.toString()));
+                    alphabet.add(new Letter(String.valueOf(idLetter++), strArray));
                     startIndex = index + 1;
-
                 }
-
             }
         }
-        for (Letter letter:alphabet){
-            System.out.println(letter);
-        }
+        addSpace();
     }
 
+    private void addSpace() {
+        List<String> str = new ArrayList<>();
+        for (int i = 0; i < alphabet.get(0).getArrayLetter().size(); i++)
+            str.add("     ");
+        alphabet.add(new Letter(" ", str));
+    }
 
-    /*
-            for (int i = l; i < size - 8; i++) {
-                for (List<String> letter : letters) {
-                    strBuilder.append(letter.get(i));
+    public void writeTextToArray(ConsoleColor consoleColor, String text) {
+        List<String> splitText = List.of(text.split(""));
+        List<Letter> textArray = new ArrayList<>();
+        if (checkText(text)) {
+            for (String item : splitText) {
+                for (Letter letter : alphabet) {
+                    if (letter.getNameOfLetter().equals(item)) {
+                        textArray.add(letter);
+                        splitText.iterator().next();
+                    }
                 }
-                strBuilder.append("\n");
             }
-            arrayLetter.add(new Letter(String.valueOf(idLetter++), strBuilder.toString()));
-            strBuilder = new StringBuilder();
+        } else throw new RuntimeException("Incorrect world!!!");
+        outText(textArray);
+    }
 
-    for (int j = 0; j < letters.get(i).size(); j++) {
-                String item = letters.get(i).get(j);
-                if (item.equals(" ")) {
-                    if (!isAllSpace(i, j)){
-
-                    }
-                    else {
-                        strBuilder = new StringBuilder();
-                    }
-                } else
-                    strBuilder.append(item).append("\n");
-            }*/
-
-    public void writeText(ConsoleColor consoleColor, String text, int x, int y) {
-        StringBuilder strBuilder = new StringBuilder();
-        if (checkCoordinates(x, y) && checkText(text)) {
-            tecCoordinates[0] = x;
-            tecCoordinates[1] = y;
-            if (isBigFont) {
-
-
-            } else {
-
-
+    private void outText(List<Letter> textArray){
+        List<String> outText = new ArrayList<>();
+        for (int i = 0; i < alphabet.get(0).getArrayLetter().size(); i++) {
+            StringBuilder builder = new StringBuilder();
+            for (Letter item : textArray) {
+                builder.append(item.getArrayLetter().get(i)).append(" ");
             }
-            System.out.println(consoleColor.getColor() + strBuilder.toString());
+            System.out.println(builder);
         }
     }
 
     private boolean checkText(String expression) {
         for (char item : expression.toCharArray())
-            if (!((64 < item) && (item < 123)))
+            if (!(((64 < item) && (item < 91)) || (32 == item)))
                 return false;
         return true;
+    }
+
+    public static LetterWriter getLetterWriter() {
+        return letterWriter;
     }
 
     public boolean checkCoordinates(int x, int y) {

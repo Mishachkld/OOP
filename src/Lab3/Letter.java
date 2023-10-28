@@ -1,10 +1,14 @@
 package Lab3;
 
+import java.util.List;
+
 public class Letter {
-    private String arrayLetter;
+    private String arrayLetterS;
+    private List<String> arrayLetter;
+
     private String nameOfLetter;
 
-    public Letter(String nameOfLetter, String arrayLetter) {
+    public Letter(String nameOfLetter, List<String> arrayLetter) {
         this.nameOfLetter = nameOfLetter;
         this.arrayLetter = arrayLetter;
     }
@@ -13,12 +17,17 @@ public class Letter {
         return nameOfLetter;
     }
 
-    public String getArrayLetter(){
-        return arrayLetter;
-    }
 
     @Override
     public String toString() {
-        return nameOfLetter + ":\n" + arrayLetter + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String item: arrayLetter) {
+            stringBuilder.append(item).append("\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    public List<String> getArrayLetter() {
+        return arrayLetter;
     }
 }
