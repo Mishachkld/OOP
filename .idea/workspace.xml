@@ -297,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699117783041</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1699121433476</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699121433476</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +334,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Lab4/VirtualKeyboardGUI.java</url>
-          <line>138</line>
+          <line>141</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

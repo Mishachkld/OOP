@@ -9,19 +9,9 @@ public class CommandDialog extends JDialog {
     private JLabel operationName;
 
     public CommandDialog(String typeOfOperation, String operation) {
-        setContentPane(contentPane);
-        setLocation(800, 400);
-        setSize(400,200);
+       this(operation);
         setTitle(typeOfOperation);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
 
-        buttonOK.addActionListener(e -> onOK());
-        operationName.setText(operation);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-
-        pack();
-        setVisible(true);
     }
 
     public CommandDialog(String operation) {

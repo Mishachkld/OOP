@@ -34,25 +34,25 @@ public class VirtualKeyboard implements CommandReader {
             }
             new CommandDialog("Command " + command + " running!");
             System.out.println("Command " + command + " running!");
-        }
-        else new CommandDialog("Command not found 404");
+        } else new CommandDialog("Command not found 404");
     }
 
     @Override
     public void undoCommand() {
         if (!commandExecuted.empty()) {
             System.out.println("Command UNDO: " + commandExecuted.peek());
-            new CommandDialog("Command UNDO: ",commandExecuted.pop());
-        }
-        else
-            new CommandDialog("Command not found 404");
+            new CommandDialog("UNDO ", "Command UNDO: " + commandExecuted.pop());
+        } else
+            new CommandDialog("Nothing UNDO :(");
     }
 
     @Override
     public void createCommand(String command) {
-        commands.add(command);
-        new CommandDialog("Created new command: ", command);
-        System.out.println("Created new command: " + command);
+        if (!command.isEmpty()) {
+            commands.add(command);
+            new CommandDialog("Created new command: ", "Created new command: " + command);
+            System.out.println("Created new command: " + command);
+        }
     }
 }
 
