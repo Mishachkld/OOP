@@ -1,26 +1,45 @@
 package Lab4;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
-public class VirtualKeyboard {
-    public static void main(String[] args) {
+public class VirtualKeyboard implements CommandReader{
+    private VirtualKeyboardGUI keyboardGUI;
 
+    private Stack<String> commandExecuted;
+    private List<String> commands;
+
+
+    public static void main(String[] args) {
+        new VirtualKeyboard();
     }
-    private Stack<KeyChar> usedCommands;
-    private HashMap<String, KeyChar> keys;
 
     public VirtualKeyboard(){
-
+        keyboardGUI = new VirtualKeyboardGUI(this);
+        commandExecuted = new Stack<>();
+        commands = new ArrayList<>();
 
     }
 
-    public void addItems(){
+
+
+    @Override
+    public void runCommand(String command) {
+        commandExecuted.push(command);
     }
 
+    @Override
+    public void undoCommand() {
+        if (!commandExecuted.empty())
+            System.out.println("Command UNDO" + commandExecuted.pop());
+    }
 
-
-
+    @Override
+    public void createCommand(String command) {
+        commands.add(command);
+        new CommandDialog(command);
+    }
 }
 
 
