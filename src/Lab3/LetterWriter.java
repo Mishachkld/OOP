@@ -27,9 +27,12 @@ public class LetterWriter {
 
     public static void main(String[] args) {
         LetterWriter writer = LetterWriter.getLetterWriter();
-        writer.writeText(ConsoleColor.YELLOW, "HELLO AMIGO");
-        writer.setBigFont();
-        writer.writeText(ConsoleColor.PURPLE, "ANOTHER AMIGO");
+        writer.changeSizeOfFont();
+        writer.writeText(ConsoleColor.PURPLE, "HELLO AMIGO");
+        writer.writeText(ConsoleColor.BLUE, "ANOTHER AMIGO");
+
+
+
 //        HashMap<String, List<String>> hashMap = new HashMap<>();
     }
 
@@ -43,7 +46,7 @@ public class LetterWriter {
 
     }
 
-    public void setBigFont(){
+    public void changeSizeOfFont(){
         try {
             isBigFont = !isBigFont;
             alphabet = new ArrayList<>();
@@ -142,8 +145,33 @@ public class LetterWriter {
         return letterWriter;
     }
 
-   /* public boolean checkCoordinates(int x, int y) {
-        return (x >= 0) && (y >= 0);
+    private static class Letter {
+        private List<String> arrayLetter;
+
+        private String nameOfLetter;
+
+        public Letter(String nameOfLetter, List<String> arrayLetter) {
+            this.nameOfLetter = nameOfLetter;
+            this.arrayLetter = arrayLetter;
+        }
+
+        public String getNameOfLetter(){
+            return nameOfLetter;
+        }
+
+
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (String item: arrayLetter) {
+                stringBuilder.append(item).append("\n");
+            }
+            return stringBuilder.toString();
+        }
+
+        public List<String> getArrayLetter() {
+            return arrayLetter;
+        }
     }
-    */
+
 }

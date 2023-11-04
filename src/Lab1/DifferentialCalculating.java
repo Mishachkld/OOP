@@ -108,8 +108,12 @@ class Controller {
         }
     }
 
-    private static double function(double x) {
+    public static double function(double x) {
         return x * x;
     }
 
+}
+
+interface FunctionOperator{
+    double apply(double x);
 }
