@@ -1,4 +1,4 @@
-package Lab4;
+package Lab4.GUI;
 
 import javax.swing.*;
 import java.awt.*;

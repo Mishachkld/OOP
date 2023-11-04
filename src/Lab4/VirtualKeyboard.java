@@ -1,5 +1,9 @@
 package Lab4;
 
+import Lab4.Commands.CommandReader;
+import Lab4.GUI.CommandDialog;
+import Lab4.GUI.VirtualKeyboardGUI;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -7,8 +11,8 @@ import java.util.Stack;
 public class VirtualKeyboard implements CommandReader {
     private VirtualKeyboardGUI keyboardGUI;
 
-    private Stack<String> commandExecuted;
-    private List<String> commands;
+    private final Stack<String> commandExecuted;
+    private final List<String> commands;
 
 
     public static void main(String[] args) {
@@ -48,11 +52,12 @@ public class VirtualKeyboard implements CommandReader {
 
     @Override
     public void createCommand(String command) {
-        if (!command.isEmpty()) {
+        if (!command.isEmpty() && !commands.contains(command)) {
             commands.add(command);
             new CommandDialog("Created new command: ", "Created new command: " + command);
             System.out.println("Created new command: " + command);
         }
+
     }
 }
 

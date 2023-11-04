@@ -1,4 +1,4 @@
-package Lab4;
+package Lab4.Commands;
 
 public interface CommandReader {
     void runCommand(String command);

@@ -1,31 +1,24 @@
-package Lab4;
+package Lab4.GUI;
 
+import Lab4.CommandJButton;
+import Lab4.Commands.CommandReader;
 import Lab4.Constants.Constants;
 
 import javax.swing.*;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import static Lab4.Constants.Constants.*;
 
 
 public class VirtualKeyboardGUI extends JFrame {
 
-    private List<List<CommandJButton>> buttonsArray;
-    private JTextArea textArea;
+    private final List<List<CommandJButton>> buttonsArray;
+    private final JTextArea textArea;
 
-    private Vector<String> commands;
-
-    private CommandReader reader;
+    private final CommandReader reader;
 
     public VirtualKeyboardGUI(CommandReader reader) {
         super(TITLE);
@@ -33,9 +26,9 @@ public class VirtualKeyboardGUI extends JFrame {
 
         buttonsArray = new ArrayList<>();
         textArea = new JTextArea();
-        commands = new Vector<>();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
+
         //set size of the content pane ie frame
         this.getContentPane().setPreferredSize(SIZE);
         this.setLocation(POSITION);
@@ -54,9 +47,11 @@ public class VirtualKeyboardGUI extends JFrame {
         textArea.setPreferredSize(new Dimension(800, 200));
 
         //set the info label on top
-        JLabel info = new JLabel("<html>Набирайте как-нить текст и чтот-то будет печататься в поле ниже :з <br> </html>");
+        JLabel info = new JLabel("<html> Run command - запуск комманды <br>" +
+                "Create command - создает комманду <br>" +
+                "UNDO - отменят последнюю комманду <html>");
         //set the bold font for info
-        info.setFont(new Font("Verdana", Font.BOLD, 14));
+        info.setFont(new Font("Verdana", Font.BOLD, 12));
 
         /*set the layout and place compomnet in place and pack it */
         setLayout(new BorderLayout());
@@ -65,31 +60,45 @@ public class VirtualKeyboardGUI extends JFrame {
         JPanel jpCenter = new JPanel();
         JPanel jpKeyboard = new JPanel();
         JPanel jpNote = new JPanel();
+        add(jpNote, BorderLayout.WEST);
         add(jpNorth, BorderLayout.NORTH);
-        add(jpNote);
         add(jpCenter, BorderLayout.CENTER);
         add(jpKeyboard, BorderLayout.SOUTH);
-
-        ListModel<String> model = new DefaultListModel<>();
-        JList list = new JList(model);
-        DefaultListModel<String> listModel = (DefaultListModel) list.getModel();
-        list.addListSelectionListener((e) -> {
-            textArea.setText(null);
-            textArea.append((String) list.getSelectedValue());
-        });
-        JScrollPane scroller = new JScrollPane(list);
-        scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         jpNorth.setLayout(new BorderLayout());
         jpNorth.add(info, BorderLayout.WEST);
 
         jpCenter.setLayout(new BorderLayout());
-        jpCenter.add(textArea, BorderLayout.WEST);
-        jpCenter.add(scroller, BorderLayout.CENTER);
+        jpCenter.add(textArea, BorderLayout.CENTER);
 
+        //creating scrollPane with binding commands
+        ListModel<String> modelListCommands = new DefaultListModel<>();
+        JList listCommands = new JList(modelListCommands);
+        listCommands.setFixedCellWidth(200);
+        DefaultListModel<String> listModel = (DefaultListModel) listCommands.getModel();
+        listCommands.addListSelectionListener((e) -> {
+            textArea.setText(null);
+            textArea.append((String) listCommands.getSelectedValue());
+        });
+        JScrollPane scroller1 = new JScrollPane(listCommands);
+        scroller1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        jpCenter.add(scroller1, BorderLayout.EAST);
+
+
+        //creating scrollPane with log
+        ListModel<String> modelListExecuted = new DefaultListModel<>();
+        JList listCommandsExecuted = new JList(modelListExecuted);
+        listCommandsExecuted.setFixedCellWidth(200);
+        listCommandsExecuted.clearSelection();
+        JScrollPane scroller2 = new JScrollPane(listCommandsExecuted);
+        scroller2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        DefaultListModel<String> listModelExecuted = (DefaultListModel) listCommandsExecuted.getModel();
+        jpCenter.add(scroller2, BorderLayout.WEST);
+
+
+        //jpNote.add(scroller2, BorderLayout.CENTER);
         //layout for keyboard
-        jpKeyboard.setLayout(new GridLayout(6, 1));
+        jpKeyboard.setLayout(new GridLayout(ROWS, 1));
         //pack the components
         pack();
         for (int i = 0; i < Constants.ROWS; i++) {
@@ -129,7 +138,10 @@ public class VirtualKeyboardGUI extends JFrame {
                             public void execute() {
                                 if (!textArea.getText().isEmpty()) {
                                     reader.runCommand(textArea.getText());
+                                    if (listModel.contains(textArea.getText()))
+                                        listModelExecuted.addElement(textArea.getText());
                                     textArea.setText(null);
+                                    listCommands.clearSelection();
                                 }
                             }
                         });
@@ -139,7 +151,8 @@ public class VirtualKeyboardGUI extends JFrame {
                             @Override
                             public void execute() {
                                 reader.undoCommand();
-
+                                if (!listModelExecuted.isEmpty())
+                                    listModelExecuted.remove(listModelExecuted.size() - 1);
                             }
                         });
                         break;
@@ -150,8 +163,9 @@ public class VirtualKeyboardGUI extends JFrame {
                                 String textFromTextArea = textArea.getText();
                                 reader.createCommand(textFromTextArea);
                                 textArea.setText(null);
-                                if (!textFromTextArea.isEmpty())
+                                if (!textFromTextArea.isEmpty() && !listModel.contains(textFromTextArea))
                                     listModel.addElement(textFromTextArea);
+
                             }
                         });
                         break;
@@ -177,19 +191,12 @@ public class VirtualKeyboardGUI extends JFrame {
             jpKeyboard.add(rowPanel);
         }
 
-        /*paint first keyboard row  and add it to the keyboard*/
-
-        //paint the fifth row
-        //get the panel for the  row
-
-        /*draw the buttons */
-        /*add listeners */
 
         /*add listeners to all the button */
         for (List<CommandJButton> array : buttonsArray)
             for (CommandJButton button : array)
                 button.addActionListener(e -> button.execute());
-
-
     }
+
+
 }
