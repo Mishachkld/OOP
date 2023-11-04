@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class VirtualKeyboard implements CommandReader{
+public class VirtualKeyboard implements CommandReader {
     private VirtualKeyboardGUI keyboardGUI;
 
     private Stack<String> commandExecuted;
@@ -15,7 +15,7 @@ public class VirtualKeyboard implements CommandReader{
         new VirtualKeyboard();
     }
 
-    public VirtualKeyboard(){
+    public VirtualKeyboard() {
         keyboardGUI = new VirtualKeyboardGUI(this);
         commandExecuted = new Stack<>();
         commands = new ArrayList<>();
@@ -23,22 +23,36 @@ public class VirtualKeyboard implements CommandReader{
     }
 
 
-
     @Override
     public void runCommand(String command) {
-        commandExecuted.push(command);
+        if (commands.contains(command)) {
+            commandExecuted.push(command);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            new CommandDialog("Command " + command + " running!");
+            System.out.println("Command " + command + " running!");
+        }
+        else new CommandDialog("Command not found 404");
     }
 
     @Override
     public void undoCommand() {
-        if (!commandExecuted.empty())
-            System.out.println("Command UNDO" + commandExecuted.pop());
+        if (!commandExecuted.empty()) {
+            System.out.println("Command UNDO: " + commandExecuted.peek());
+            new CommandDialog("Command UNDO: ",commandExecuted.pop());
+        }
+        else
+            new CommandDialog("Command not found 404");
     }
 
     @Override
     public void createCommand(String command) {
         commands.add(command);
-        new CommandDialog(command);
+        new CommandDialog("Created new command: ", command);
+        System.out.println("Created new command: " + command);
     }
 }
 
