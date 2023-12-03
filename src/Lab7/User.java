@@ -7,12 +7,14 @@ public class User {
     private String phone;
     private String city;
     private Gender gender;
-    public User(Integer id, String name, Gender gender, String phone){
+
+    public User(Integer id, String name, Gender gender, String phone) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
     }
+
 
     public Gender getGender() {
         return gender;
@@ -60,5 +62,11 @@ public class User {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User: " + id + " " + name + " " + gender + " " + phone + "\n";
     }
 }

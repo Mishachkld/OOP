@@ -7,6 +7,16 @@ import java.util.List;
 
 public class MemoryUserRepository extends MemoryRepository<User> implements UserRepository {
 
+    private static final MemoryUserRepository repository = new MemoryUserRepository();
+
+
+
+    private MemoryUserRepository(){}
+
+    public static MemoryUserRepository getRepository(){
+        return repository;
+    }
+
     @Override
     public User getById(Integer id) {
         for (User user : getElements()) {
