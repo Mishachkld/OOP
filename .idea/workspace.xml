@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c283e29-488e-4b0e-b39c-37c38d3ee83b" name="Changes" comment="Add Lab 6">
-      <change afterPath="$PROJECT_DIR$/src/Lab5/CustomCollection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab5/Listeners/CustomListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab5/Listeners/INotifyCollectionChanged.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab5/Listeners/INotifyPropertyChanged.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab5/Listeners/INotifyPropertyChanging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab5/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/Interface/IRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/Interface/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/MemoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/MemoryUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab7/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab4/Commands/CommandReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab4/Commands/CommandReader.java" afterDir="false" />
-    </list>
+    <list default="true" id="4c283e29-488e-4b0e-b39c-37c38d3ee83b" name="Changes" comment="Add Lab 7" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -355,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701509522284</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Add Lab 7">
+      <option name="closed" value="true" />
+      <created>1701608268472</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1701608268472</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +373,8 @@
     <MESSAGE value="Lab 4 почти готова" />
     <MESSAGE value="Lab 4" />
     <MESSAGE value="Add Lab 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Lab 6" />
+    <MESSAGE value="Add Lab 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Lab 7" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

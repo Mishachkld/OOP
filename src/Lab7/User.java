@@ -7,9 +7,10 @@ public class User {
     private String phone;
     private String city;
     private Gender gender;
-    public User(Integer id, String name, String phone){
+    public User(Integer id, String name, Gender gender, String phone){
         this.id = id;
         this.name = name;
+        this.gender = gender;
         this.phone = phone;
     }
 
