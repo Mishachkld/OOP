@@ -1,8 +1,8 @@
 package Lab5.Listeners;
 
 public interface INotifyPropertyChanging {
-    void AddInotifyPropertyChangedListener(CustomListener listener, boolean isChanged);
+    void addInotifyPropertyChangedListener(CustomListenerChange listener);
 
-    void RemoveNotifyPropertyChangedListener(CustomListener listener, boolean isRemoved);
+    void removeNotifyPropertyChangedListener(CustomListenerChange listener);
 
 }
