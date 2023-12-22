@@ -1,6 +1,4 @@
-package Lab6.Controls;
-
-import Lab6.Control;
+package Lab6.SystemControls.Controls;
 
 public class CheckBox extends Control {
     private String name;

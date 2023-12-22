@@ -1,4 +1,4 @@
-package Lab6;
+package Lab6.SystemControls.Controls;
 
 public abstract class Control {
     private Double x_position;
