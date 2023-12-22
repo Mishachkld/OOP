@@ -1,41 +1,74 @@
 package Lab2;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Array3D<T> {
-    private final List<T> array;
+    private List<T> array;
     private int size;
     private int x, y, z;
 
     public Array3D(List<T> array, int x, int y, int z) {
+        this(x, y, z);
         this.array = array;
-        size = x * y * z;
-        this.x = x;
-        this.z = z;
-        this.y = y;
-
     }
 
-    @SafeVarargs
-    public Array3D(int x, int y, int z, T... elements) {
-        this.array = new ArrayList<>(List.of(elements));
-        this.x = x;
-        this.z = z;
-        this.y = y;
-    }
-
-
-    public void fillArray(Array3D<T> array3D) {
-
+    public Array3D(int x, int y, int z) {
+        if ((x > 0) && (y > 0) && (z > 0)) {
+            array = new ArrayList<>();
+            size = x * y * z;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            for (int i = 0; i < size; i++) {
+                array.add(null);
+            }
+        }
+        else throw new IndexOutOfBoundsException();
     }
 
 
-    public List<List<T>> getValueArray(int i, int j) {
-        List<List<T>> temp = new ArrayList<>();
+    public Array3D<T> fillArray(T t, int size) {
+        Array3D<T> array3D = new Array3D<>(size, size, size);
+        Collections.fill(array3D.getBaseArray(), t);
+        return array3D;
+    }
 
 
-        return temp;
+    private List<List<T>> getValueArray2D(int index, int x) {
+        List<List<T>> resultArray = new ArrayList<>();
+        List<T> temp = new ArrayList<>();
+        switch (index) {
+            case 0:
+                for (int j = 0; j < this.y; j++) {
+                    for (int k = 0; k < z; k++) {
+                        temp.add(getValue(x, j, k));
+                    }
+                    resultArray.add(temp);
+                    temp = new ArrayList<>();
+                }
+                break;
+            case 1:
+                for (int i = 0; i < this.x; i++) {
+                    for (int k = 0; k < z; k++) {
+                        temp.add(getValue(i, x, k));
+                    }
+                    resultArray.add(temp);
+                    temp = new ArrayList<>();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < this.x; i++) {
+                    for (int j = 0; j < y; j++) {
+                        temp.add(getValue(i, j, x));
+                    }
+                    resultArray.add(temp);
+                    temp = new ArrayList<>();
+                }
+                break;
+        }
+        return resultArray;
     }
 
     public T getValue(int i, int j, int k) {
@@ -50,7 +83,7 @@ public class Array3D<T> {
         throw new IndexOutOfBoundsException();
     }
 
-    public void setValue(int x, int position, List<List<T>> array) {
+    public void setValue2D(int x, int position, List<List<T>> array) {
         switch (position) {
             case 0:
                 for (int j = 0; j < y; j++) {
@@ -89,6 +122,21 @@ public class Array3D<T> {
 
     @Override
     public String toString() {
-        return array.toString();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < x; i++) {
+            builder.append(i).append(":").append("\n");
+            for (int j = 0; j < y; j++) {
+                for (int k = 0; k < z; k++) {
+                    builder.append(getValue(i, j, k));
+                }
+                builder.append("\n");
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
+    }
+
+    private List<T> getBaseArray() {
+        return array;
     }
 }
